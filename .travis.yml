@@ -1,0 +1,22 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t radra/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true radra/react-test npm test
+
+after_success:
+  - docker build -t radra/multi-client ./client
+  - docker build -t radra/multi-nginx ./nginx
+  - docker build -t radra/multi-server ./server
+  - docker build -t radra/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker-login -u "$DOCKER_ID" --password-stdin
+  - docker push radra/multi-client
+  - docker push radra/multi-nginx
+  - docker push radra/multi-server
+  - docker push radra/multi-worker
+
