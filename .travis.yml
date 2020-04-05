@@ -14,8 +14,8 @@ after_success:
   - docker build -t radra/multi-nginx ./nginx
   - docker build -t radra/multi-server ./server
   - docker build -t radra/multi-worker ./worker
-  - echo "$DOCKER_PASSWORD" | docker-login -u "$DOCKER_ID" --password-stdin
-  - docker push radra/multi-client
-  - docker push radra/multi-nginx
-  - docker push radra/multi-server
-  - docker push radra/multi-worker
+  - docker-login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD" docker.io
+  - docker push radra/multi-client:latest
+  - docker push radra/multi-nginx:latest
+  - docker push radra/multi-server:latest
+  - docker push radra/multi-worker:latest
