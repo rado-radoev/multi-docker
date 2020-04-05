@@ -4,18 +4,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t radra/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t rradoev/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true radra/react-test npm test
+  - docker run -e CI=true rradoev/react-test npm test
 
 after_success:
-  - docker build -t radra/multi-client ./client
-  - docker build -t radra/multi-nginx ./nginx
-  - docker build -t radra/multi-server ./server
-  - docker build -t radra/multi-worker ./worker
-  - docker-login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD" docker.io
-  - docker push radra/multi-client:latest
-  - docker push radra/multi-nginx:latest
-  - docker push radra/multi-server:latest
-  - docker push radra/multi-worker:latest
+  - docker build -t rradoev/multi-client ./client
+  - docker build -t rradoev/multi-nginx ./nginx
+  - docker build -t rradoev/multi-server ./server
+  - docker build -t rradoev/multi-worker ./worker
+  - docker-login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  - docker push rradoev/multi-client:latest
+  - docker push rradoev/multi-nginx:latest
+  - docker push rradoev/multi-server:latest
+  - docker push rradoev/multi-worker:latest
