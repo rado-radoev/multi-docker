@@ -14,7 +14,7 @@ after_success:
   - docker build -t rradoev/multi-nginx ./nginx
   - docker build -t rradoev/multi-server ./server
   - docker build -t rradoev/multi-worker ./worker
-  - docker-login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  - docker-login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD" docker.io
   - docker push rradoev/multi-client:latest
   - docker push rradoev/multi-nginx:latest
   - docker push rradoev/multi-server:latest
