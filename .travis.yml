@@ -19,3 +19,16 @@ after_success:
   - docker push rradoev/multi-nginx:latest
   - docker push rradoev/multi-server:latest
   - docker push rradoev/multi-worker:latest
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket: elasticbeanstalk-us-east-2-119487072952
+  bucket_path: docker-multi
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
