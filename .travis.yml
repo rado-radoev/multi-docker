@@ -19,4 +19,3 @@ after_success:
   - docker push radra/multi-nginx
   - docker push radra/multi-server
   - docker push radra/multi-worker
-
