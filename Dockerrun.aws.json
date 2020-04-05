@@ -1,6 +1,6 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "containerDerfinitions": [
+  "containerDefinitions": [
     {
       "name": "client",
       "image": "radra/multi-client",
